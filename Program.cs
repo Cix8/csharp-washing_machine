@@ -2,10 +2,24 @@
 
 myWashingMachine.OpenPorthole();
 
-myWashingMachine.LoadWashingMachine(5);
+try
+{
+    myWashingMachine.LoadWashingMachine(11);
+}
+catch (Exception ex) { 
+    Console.WriteLine(ex.Message);
+}
 
 myWashingMachine.ClosePorthole();
 
-myWashingMachine.LoadWashingMachine(5);
+try
+{
+    myWashingMachine.LoadWashingMachine(5);
+}
+catch (Exception ex) {
+    Console.WriteLine(ex.Message);
+}
+
+float currentCharge = myWashingMachine.GetCurrentChargeWeight();
 
 return;

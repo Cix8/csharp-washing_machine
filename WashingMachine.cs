@@ -26,7 +26,7 @@
     {
         if(!this.openPorthole)
         {
-            Console.WriteLine("Devi prima aprire l'oblò altrimenti non posso caricare la lavatrice");
+            throw new Exception("Devi prima aprire l'oblò altrimenti non posso caricare la lavatrice");
         } else
         {
             if(this.currentChargeWeight + weight < this.maxChargeKg)
@@ -34,7 +34,7 @@
                 this.currentChargeWeight += (float)weight;
             } else
             {
-                Console.WriteLine("Peso massimo di carica raggiunto!!!");
+                throw new Exception("Il peso totale supera il peso massimo consentito, prova con un qualcosa di meno pesante...");
             }
         }
     }
@@ -79,20 +79,19 @@
         this.loadedCorrectly = false;
         if(this.openPorthole)
         {
-            Console.WriteLine("Devi prima chiudere l'oblò!");
+            throw new Exception("Devi prima chiudere l'oblò!");
         } else if (this.currentChargeWeight == 0)
         {
-            Console.WriteLine("Il cestello è vuoto!");
+            throw new Exception("Il cestello è vuoto!");
         } else if (!this.soapAdded)
         {
-            Console.WriteLine("Non hai aggiunto il sapone...");
+            throw new Exception("Non hai aggiunto il sapone...");
         } else if (this.coldMode)
         {
-            Console.WriteLine("Il programma è impostato su 'lavaggio a freddo' mentre si sta cercando di avviare il lavaggio a caldo...");
+            throw new Exception("Il programma è impostato su 'lavaggio a freddo' mentre si sta cercando di avviare il lavaggio a caldo...");
         } else
         {
             this.loadedCorrectly = true;
-            Console.WriteLine("Programma di lavaggio a caldo avviato correttamente");
             this.OutOfSoap();
         }
     }
@@ -102,24 +101,23 @@
         this.loadedCorrectly = false;
         if (this.openPorthole)
         {
-            Console.WriteLine("Devi prima chiudere l'oblò!");
+            throw new Exception("Devi prima chiudere l'oblò!");
         }
         else if (this.currentChargeWeight == 0)
         {
-            Console.WriteLine("Il cestello è vuoto!");
+            throw new Exception("Il cestello è vuoto!");
         }
         else if (!this.soapAdded)
         {
-            Console.WriteLine("Non hai aggiunto il sapone...");
+            throw new Exception("Non hai aggiunto il sapone...");
         }
         else if (!this.coldMode)
         {
-            Console.WriteLine("Il programma è impostato su 'lavaggio a caldo' mentre si sta cercando di avviare il lavaggio a freddo...");
+            throw new Exception("Il programma è impostato su 'lavaggio a caldo' mentre si sta cercando di avviare il lavaggio a freddo...");
         }
         else
         {
             this.loadedCorrectly = true;
-            Console.WriteLine("Programma di lavaggio a freddo avviato correttamente");
             this.OutOfSoap();
         }
     }

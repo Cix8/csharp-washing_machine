@@ -22,4 +22,12 @@ catch (Exception ex) {
 
 float currentCharge = myWashingMachine.GetCurrentChargeWeight();
 
-return;
+myWashingMachine.OpenPorthole();
+
+try
+{
+    myWashingMachine.LoadWashingMachine(5);
+} catch(Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
